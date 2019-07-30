@@ -1,7 +1,6 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 .metadata
-.mvn
 .apt_generated
 .classpath
 .factorypath
