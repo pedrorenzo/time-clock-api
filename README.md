@@ -1,2 +1,2 @@
 # timeclock
-This is a timeclock system
+This is a time clock API
