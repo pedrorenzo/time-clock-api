@@ -55,7 +55,7 @@ public class TimeEntry implements Serializable {
 		this.date = date;
 	}
 
-	@Column(name = "description", nullable = false)
+	@Column(name = "description")
 	public String getDescription() {
 		return description;
 	}
@@ -64,7 +64,7 @@ public class TimeEntry implements Serializable {
 		this.description = description;
 	}
 
-	@Column(name = "location", nullable = false)
+	@Column(name = "location")
 	public String getLocation() {
 		return location;
 	}

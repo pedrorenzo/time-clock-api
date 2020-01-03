@@ -104,7 +104,7 @@ public class Employee implements Serializable {
 		this.valuePerHour = valuePerHour;
 	}
 
-	@Column(name = "hours_worked_per_day", nullable = false)
+	@Column(name = "hours_worked_per_day")
 	public Float getHoursWorkedPerDay() {
 		return hoursWorkedPerDay;
 	}
@@ -118,7 +118,7 @@ public class Employee implements Serializable {
 		this.hoursWorkedPerDay = hoursWorkedPerDay;
 	}
 
-	@Column(name = "hours_lunch_per_day", nullable = false)
+	@Column(name = "hours_lunch_per_day")
 	public Float getHoursLunchPerDay() {
 		return hoursLunchPerDay;
 	}
