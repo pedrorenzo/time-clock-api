@@ -30,7 +30,7 @@ public class Company implements Serializable {
 	private List<Employee> employees;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
