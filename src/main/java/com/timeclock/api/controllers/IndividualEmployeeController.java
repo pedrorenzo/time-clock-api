@@ -28,7 +28,7 @@ import com.timeclock.api.services.EmployeeService;
 import com.timeclock.api.utils.PasswordUtils;
 
 @RestController
-@RequestMapping("/api/individual-employee")
+@RequestMapping("/api/individual-employees")
 @CrossOrigin(origins = "*")
 public class IndividualEmployeeController {
 
