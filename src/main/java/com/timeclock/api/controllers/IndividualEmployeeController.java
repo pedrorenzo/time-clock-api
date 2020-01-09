@@ -77,6 +77,41 @@ public class IndividualEmployeeController {
 	}
 
 	/**
+	 * Update employee data.
+	 * 
+	 * @param id
+	 * @param employeeDto
+	 * @param result
+	 * @return ResponseEntity<Response<EmployeeDto>>
+	 * @throws NoSuchAlgorithmException
+	 */
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<Response<IndividualEmployeeUpdateDto>> update(@PathVariable("id") final Long id,
+			@Valid @RequestBody final IndividualEmployeeUpdateDto employeeDto, final BindingResult result)
+			throws NoSuchAlgorithmException {
+		LOGGER.info("Updating employee: {}", employeeDto.toString());
+		final Response<IndividualEmployeeUpdateDto> response = new Response<IndividualEmployeeUpdateDto>();
+
+		final Optional<Employee> employee = this.employeeService.findById(id);
+		if (!employee.isPresent()) {
+			result.addError(new ObjectError("employee", "Employee not found."));
+		}
+
+		this.updateEmployeeData(employee.get(), employeeDto, result);
+
+		if (result.hasErrors()) {
+			LOGGER.error("Error validating employee: {}", result.getAllErrors());
+			result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
+			return ResponseEntity.badRequest().body(response);
+		}
+
+		this.employeeService.persist(employee.get());
+		response.setData(this.convertEmployeeToIndividualEmployeeUpdateDto(employee.get()));
+
+		return ResponseEntity.ok(response);
+	}
+
+	/**
 	 * Validate if the company exists and if the employee e-mail or CPF are already
 	 * registered.
 	 * 
@@ -144,41 +179,6 @@ public class IndividualEmployeeController {
 				.ifPresent(valuePerHour -> cadastroPFDto.setValuePerHour(Optional.of(valuePerHour.toString())));
 
 		return cadastroPFDto;
-	}
-
-	/**
-	 * Update employee data.
-	 * 
-	 * @param id
-	 * @param employeeDto
-	 * @param result
-	 * @return ResponseEntity<Response<EmployeeDto>>
-	 * @throws NoSuchAlgorithmException
-	 */
-	@PutMapping(value = "/{id}")
-	public ResponseEntity<Response<IndividualEmployeeUpdateDto>> update(@PathVariable("id") final Long id,
-			@Valid @RequestBody final IndividualEmployeeUpdateDto employeeDto, final BindingResult result)
-			throws NoSuchAlgorithmException {
-		LOGGER.info("Updating employee: {}", employeeDto.toString());
-		final Response<IndividualEmployeeUpdateDto> response = new Response<IndividualEmployeeUpdateDto>();
-
-		final Optional<Employee> employee = this.employeeService.findById(id);
-		if (!employee.isPresent()) {
-			result.addError(new ObjectError("employee", "Employee not found."));
-		}
-
-		this.updateEmployeeData(employee.get(), employeeDto, result);
-
-		if (result.hasErrors()) {
-			LOGGER.error("Error validating employee: {}", result.getAllErrors());
-			result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(response);
-		}
-
-		this.employeeService.persist(employee.get());
-		response.setData(this.convertEmployeeToIndividualEmployeeUpdateDto(employee.get()));
-
-		return ResponseEntity.ok(response);
 	}
 
 	/**
