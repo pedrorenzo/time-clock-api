@@ -50,7 +50,7 @@ public class Employee implements Serializable {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -59,7 +59,7 @@ public class Employee implements Serializable {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -68,7 +68,7 @@ public class Employee implements Serializable {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 
@@ -77,7 +77,7 @@ public class Employee implements Serializable {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(final String password) {
 		this.password = password;
 	}
 
@@ -86,7 +86,7 @@ public class Employee implements Serializable {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
+	public void setCpf(final String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -100,7 +100,7 @@ public class Employee implements Serializable {
 		return Optional.ofNullable(valuePerHour);
 	}
 
-	public void setValuePerHour(BigDecimal valuePerHour) {
+	public void setValuePerHour(final BigDecimal valuePerHour) {
 		this.valuePerHour = valuePerHour;
 	}
 
@@ -114,7 +114,7 @@ public class Employee implements Serializable {
 		return Optional.ofNullable(hoursWorkedPerDay);
 	}
 
-	public void setHoursWorkedPerDay(Float hoursWorkedPerDay) {
+	public void setHoursWorkedPerDay(final Float hoursWorkedPerDay) {
 		this.hoursWorkedPerDay = hoursWorkedPerDay;
 	}
 
@@ -128,7 +128,7 @@ public class Employee implements Serializable {
 		return Optional.ofNullable(hoursLunchPerDay);
 	}
 
-	public void setHoursLunchPerDay(Float hoursLunchPerDay) {
+	public void setHoursLunchPerDay(final Float hoursLunchPerDay) {
 		this.hoursLunchPerDay = hoursLunchPerDay;
 	}
 
@@ -138,7 +138,7 @@ public class Employee implements Serializable {
 		return profile;
 	}
 
-	public void setProfile(ProfileEnum profile) {
+	public void setProfile(final ProfileEnum profile) {
 		this.profile = profile;
 	}
 
@@ -147,7 +147,7 @@ public class Employee implements Serializable {
 		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(final Date createDate) {
 		this.createDate = createDate;
 	}
 
@@ -156,7 +156,7 @@ public class Employee implements Serializable {
 		return updateDate;
 	}
 
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(final Date updateDate) {
 		this.updateDate = updateDate;
 	}
 
@@ -165,7 +165,7 @@ public class Employee implements Serializable {
 		return company;
 	}
 
-	public void setCompany(Company company) {
+	public void setCompany(final Company company) {
 		this.company = company;
 	}
 
@@ -174,7 +174,7 @@ public class Employee implements Serializable {
 		return timeEntries;
 	}
 
-	public void setTimeEntries(List<TimeEntry> timeEntries) {
+	public void setTimeEntries(final List<TimeEntry> timeEntries) {
 		this.timeEntries = timeEntries;
 	}
 
