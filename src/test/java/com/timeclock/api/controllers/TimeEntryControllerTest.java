@@ -99,9 +99,9 @@ public class TimeEntryControllerTest {
 				.andExpect(status().isOk());
 	}
 
-	@Ignore
 	@Test
-	@WithMockUser(username = "user@user.com", roles = { "USER" })
+	@WithMockUser
+	@Ignore
 	public void testRemoveTimeEntryAccessForbidden() throws Exception {
 		BDDMockito.given(this.timeEntryService.findById(Mockito.anyLong())).willReturn(Optional.of(new TimeEntry()));
 
